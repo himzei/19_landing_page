@@ -1,0 +1,12 @@
+section {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.hero {
+  background-image: url("../images/bread1.jpg");
+  text-align: center;
+  padding-top: 10vh;
+}
