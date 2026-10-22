@@ -1,20 +1,811 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>랜딩페이지 테스트</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Today's Trip - 오늘의 추천 여행</title>
+    <meta name="description" content="지금 여행 가기 좋은 사계절 명소와 테마별 최적의 여행지를 추천해 드립니다." />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
   </head>
+
   <body>
-    <section class="hero">
-      <h1 class="title">WCB Bakery</h1>
-      <p>
-        엄선된 재료와 식감이 살아있는빵.<br />
-        매일 아침 갓 구운 빵<br />
-        빵과 함께 행복한 시간을 만끽해보세요
-      </p>
-      <div>안녕하세요</div>
-    </section>
+    <!-- 1. 네비게이션 헤더 -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="#home" class="brand-logo" aria-label="Today's Trip 홈으로 이동">
+          <span class="brand-icon">🧭</span>
+          <span class="brand-name">Today's Trip</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#seasons" class="nav-link">🌸 사계절 추천</a></li>
+          <li><a href="#themes" class="nav-link">🎯 테마별 명소</a></li>
+          <li><a href="#random-pick" class="nav-link">🎲 오늘의 여행지 뽑기</a></li>
+          <li><a href="#tips" class="nav-link">📝 여행 꿀팁 & 준비물</a></li>
+          <li><a href="#contact" class="nav-link">✉️ Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" class="btn-qr-nav open-qr-modal" aria-label="모바일 QR 코드 보기">
+            <span>📱 모바일 QR</span>
+          </button>
+          <button type="button" class="mobile-toggle" aria-label="메뉴 열기">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 2. 히어로 섹션 (원본 디자인 요소 계승 및 감성 강화) -->
+      <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-badge-wrap">
+            <span class="hero-badge">✨ 대한민국 사계절 힐링 여행 가이드</span>
+          </div>
+
+          <h1 class="title">Today's Trip</h1>
+
+          <p class="middle">지금 여행 가기 좋은 곳들을 추천해 드립니다.</p>
+
+          <div class="hero-cta-group">
+            <a href="#seasons" class="btn btn-primary">
+              <span>🌸 사계절 여행지 둘러보기</span>
+            </a>
+            <a href="#random-pick" class="btn btn-outline">
+              <span>🎲 오늘의 추천 여행지 뽑기</span>
+            </a>
+          </div>
+
+          <!-- 모바일 접속 QR 미리보기 카드 (기존 qrcode.png 연동) -->
+          <div class="hero-qr-preview open-qr-modal" style="cursor: pointer;" title="클릭하여 QR 코드 크게 보기">
+            <div class="hero-qr-thumb">
+              <img
+                src="images/qrcode.png"
+                alt="네이버 이동 QR 코드"
+                width="60"
+                height="60"
+              />
+            </div>
+            <div class="hero-qr-text">
+              <div class="hero-qr-title">📱 스마트폰으로 바로 보기</div>
+              <p class="hero-qr-desc">카메라로 QR을 비추면 모바일로 즉시 연결됩니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#seasons" class="hero-scroll-down" aria-label="아래로 스크롤">
+          <span>Explore More</span>
+          <span>↓</span>
+        </a>
+      </section>
+
+      <!-- 3. 사계절 추천 섹션 (Spring, Summer, Autumn, Winter) -->
+      <section class="section seasons-section" id="seasons">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">SEASONAL BEST</span>
+            <h2 class="section-title">사계절이 빚어낸 눈부신 풍경</h2>
+            <p class="section-desc">계절마다 전혀 다른 매력으로 피어나는 우리나라의 대표 여행지를 만나보세요.</p>
+          </div>
+
+          <!-- 계절 탭 버튼 -->
+          <div class="seasons-tab-bar">
+            <button type="button" class="season-tab active" data-season="spring">
+              <span>🌸 봄 (Spring)</span>
+            </button>
+            <button type="button" class="season-tab" data-season="summer">
+              <span>🌊 여름 (Summer)</span>
+            </button>
+            <button type="button" class="season-tab" data-season="autumn">
+              <span>🍁 가을 (Autumn)</span>
+            </button>
+            <button type="button" class="season-tab" data-season="winter">
+              <span>❄️ 겨울 (Winter)</span>
+            </button>
+          </div>
+
+          <!-- 봄 패널 -->
+          <div class="destinations-grid season-panel active" id="season-spring">
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/spring.jpg" alt="경주 보문관광단지 벚꽃" loading="lazy" />
+                <span class="card-badge badge-spring">🌸 봄의 낭만</span>
+                <button type="button" class="btn-like" data-id="spring-1" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 경북 경주시</span>
+                <h3 class="card-title">경주 보문단지 & 첨성대</h3>
+                <p class="card-desc">연분홍 벚꽃이 흩날리는 보문호수와 유채꽃·튤립이 반겨주는 천년 고도의 밤 산책 코스.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#벚꽃놀이</span>
+                  <span class="tag-item">#인생야경</span>
+                  <span class="tag-item">#황리단길</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="경주 보문단지">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">128</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img1-800.jpg" alt="제주 가시리 녹산로" loading="lazy" />
+                <span class="card-badge badge-spring">🌸 노란 꽃길</span>
+                <button type="button" class="btn-like" data-id="spring-2" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 제주 서귀포시</span>
+                <h3 class="card-title">제주 가시리 녹산로</h3>
+                <p class="card-desc">한국의 아름다운 길 100선! 10km에 걸쳐 노란 유채꽃과 벚꽃 터널이 이어지는 드라이브 천국.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#유채꽃</span>
+                  <span class="tag-item">#드라이브</span>
+                  <span class="tag-item">#인생사진</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="제주 가시리 녹산로">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">94</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img2-800.jpg" alt="구례 산수유마을" loading="lazy" />
+                <span class="card-badge badge-spring">🌸 봄의 전령</span>
+                <button type="button" class="btn-like" data-id="spring-3" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 전남 구례군</span>
+                <h3 class="card-title">구례 산수유 꽃마을</h3>
+                <p class="card-desc">지리산 자락을 노랗게 물들이는 산수유꽃과 맑은 서시천 계곡 돌담길이 선사하는 평화로운 정취.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#산수유축제</span>
+                  <span class="tag-item">#돌담길</span>
+                  <span class="tag-item">#지리산힐링</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="구례 산수유마을">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">83</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 여름 패널 -->
+          <div class="destinations-grid season-panel" id="season-summer" style="display: none;">
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/summer.jpg" alt="강릉 경포대 안목해변" loading="lazy" />
+                <span class="card-badge badge-summer">🌊 시원한 바다</span>
+                <button type="button" class="btn-like" data-id="summer-1" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 강원 강릉시</span>
+                <h3 class="card-title">강릉 경포대 & 안목해변</h3>
+                <p class="card-desc">탁 트인 코발트빛 동해바다와 솔향 솔솔 나는 해안길, 안목 커피거리에서 즐기는 에스프레소의 여유.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#동해바다</span>
+                  <span class="tag-item">#커피거리</span>
+                  <span class="tag-item">#순두부젤라또</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="강릉 경포대 & 안목해변">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">152</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img3-800.jpg" alt="제주 협재해수욕장" loading="lazy" />
+                <span class="card-badge badge-summer">🌊 에메랄드빛</span>
+                <button type="button" class="btn-like" data-id="summer-2" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 제주 제주시</span>
+                <h3 class="card-title">제주 협재 & 금능</h3>
+                <p class="card-desc">수채화를 풀어놓은 듯 투명한 에메랄드빛 바다와 눈앞에 비양도가 그림처럼 펼쳐지는 서쪽의 낙원.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#스노클링</span>
+                  <span class="tag-item">#비양도뷰</span>
+                  <span class="tag-item">#일몰명소</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="제주 협재 & 금능">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">190</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img4-800.jpg" alt="양양 서피비치" loading="lazy" />
+                <span class="card-badge badge-summer">🏄 액티비티</span>
+                <button type="button" class="btn-like" data-id="summer-3" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 강원 양양군</span>
+                <h3 class="card-title">양양 서피비치 & 하조대</h3>
+                <p class="card-desc">이국적인 라탄 파라솔과 비치 바, 시원한 파도를 가르는 서핑의 열정과 낭만이 살아 숨 쉬는 핫플레이스.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#서핑성지</span>
+                  <span class="tag-item">#비치펍</span>
+                  <span class="tag-item">#젊음의열기</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="양양 서피비치">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">115</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 가을 패널 -->
+          <div class="destinations-grid season-panel" id="season-autumn" style="display: none;">
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/autumn.jpg" alt="순천만 갈대밭" loading="lazy" />
+                <span class="card-badge badge-autumn">🍁 황금빛 노을</span>
+                <button type="button" class="btn-like" data-id="autumn-1" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 전남 순천시</span>
+                <h3 class="card-title">순천만 습지 & 갈대밭</h3>
+                <p class="card-desc">바람 따라 사각거리는 5.4㎢ 규모의 황금빛 갈대밭과 용산전망대에서 내려다보는 붉은 S자 수로 낙조.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#갈대군락</span>
+                  <span class="tag-item">#황금노을</span>
+                  <span class="tag-item">#생태습지</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="순천만 습지">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">162</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img11-800.jpg" alt="화담숲 단풍" loading="lazy" />
+                <span class="card-badge badge-autumn">🍁 명품 단풍</span>
+                <button type="button" class="btn-like" data-id="autumn-2" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 경기 광주시</span>
+                <h3 class="card-title">경기 광주 화담숲</h3>
+                <p class="card-desc">오색 단풍 터널 사이를 지나는 모노레일과 새하얀 자작나무 숲길이 전하는 깊어가는 가을의 힐링.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#단풍명소</span>
+                  <span class="tag-item">#모노레일</span>
+                  <span class="tag-item">#자작나무숲</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="경기 광주 화담숲">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">140</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img5-800.jpg" alt="단양 보발재" loading="lazy" />
+                <span class="card-badge badge-autumn">🍁 단풍 파노라마</span>
+                <button type="button" class="btn-like" data-id="autumn-3" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 충북 단양군</span>
+                <h3 class="card-title">단양 보발재 & 도담삼봉</h3>
+                <p class="card-desc">구불구불 소백산 고갯길을 따라 화려하게 물든 단풍 파노라마와 남한강에 우뚝 솟은 도담삼봉의 비경.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#단풍드라이브</span>
+                  <span class="tag-item">#도담삼봉</span>
+                  <span class="tag-item">#패러글라이딩</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="단양 보발재">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">78</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 겨울 패널 -->
+          <div class="destinations-grid season-panel" id="season-winter" style="display: none;">
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/winter.jpg" alt="대관령 양떼목장" loading="lazy" />
+                <span class="card-badge badge-winter">❄️ 순백의 설원</span>
+                <button type="button" class="btn-like" data-id="winter-1" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 강원 평창군</span>
+                <h3 class="card-title">평창 대관령 양떼목장</h3>
+                <p class="card-desc">끝없이 펼쳐진 새하얀 눈밭과 능선 위의 나무 움막, 한국의 알프스라 불리는 겨울 설경의 정점.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#눈꽃여행</span>
+                  <span class="tag-item">#동화속풍경</span>
+                  <span class="tag-item">#양떼먹이주기</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="평창 대관령 양떼목장">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">177</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img6-800.jpg" alt="청송 얼음골 빙벽" loading="lazy" />
+                <span class="card-badge badge-winter">❄️ 겨울왕국</span>
+                <button type="button" class="btn-like" data-id="winter-2" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 경북 청송군</span>
+                <h3 class="card-title">청송 얼음골 빙벽</h3>
+                <p class="card-desc">높이 60m 거대한 절벽 전체가 푸른빛 얼음 폭포로 변신! 마치 엘사의 얼음 성에 들어선 듯한 신비로움.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#거대빙벽</span>
+                  <span class="tag-item">#겨울왕국</span>
+                  <span class="tag-item">#이색포토스팟</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="청송 얼음골">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">135</span></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="trip-card">
+              <div class="card-img-wrap">
+                <img src="images/img7-800.jpg" alt="제주 동백포레스트" loading="lazy" />
+                <span class="card-badge badge-winter">❄️ 붉은 동백</span>
+                <button type="button" class="btn-like" data-id="winter-3" aria-label="찜하기">
+                  <span>♥</span>
+                </button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 제주 서귀포시</span>
+                <h3 class="card-title">제주 동백포레스트</h3>
+                <p class="card-desc">눈 덮인 하얀 겨울 속에 붉게 만개한 애기동백꽃 군락지. 카페 창문 너머 동백꽃 액자 포토존이 필수 코스.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#동백꽃</span>
+                  <span class="tag-item">#감성카페</span>
+                  <span class="tag-item">#겨울인생샷</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="제주 동백포레스트">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">164</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 오늘의 맞춤 랜덤 여행지 추천기 (Today's Pick) -->
+      <section class="section random-pick-section" id="random-pick">
+        <div class="container">
+          <div class="random-pick-box">
+            <div class="random-header">
+              <span class="section-tag">TODAY'S PICK</span>
+              <h2 class="random-title">오늘 어디로 떠나볼까요?</h2>
+              <p class="random-desc">어디 갈지 망설여지신다면, 버튼 한 번으로 오늘의 운명 같은 여행지를 추천받아 보세요!</p>
+            </div>
+
+            <div class="random-trigger-wrap">
+              <button type="button" class="btn btn-random" id="pick-random-btn">
+                <span>🎲 오늘의 추천 여행지 뽑기</span>
+              </button>
+            </div>
+
+            <div id="random-placeholder" class="random-placeholder">
+              <div class="random-placeholder-icon">🧭</div>
+              <p>위 버튼을 누르면 추천 알고리즘이 오늘의 최적 여행지를 찾아드립니다.</p>
+            </div>
+
+            <div id="random-result-container" style="display: none;">
+              <!-- JS에서 동적 렌더링 -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 테마별 여행지 필터 (Themes) -->
+      <section class="section theme-section" id="themes">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">THEME EXPLORER</span>
+            <h2 class="section-title">내 취향대로 골라 떠나는 테마 여행</h2>
+            <p class="section-desc">자연 속 힐링부터 감성 카페 투어, 시원한 바다 액티비티까지 원하는 테마를 선택해보세요.</p>
+          </div>
+
+          <!-- 필터 탭 바 -->
+          <div class="theme-filter-bar">
+            <button type="button" class="theme-btn active" data-theme="all">전체보기</button>
+            <button type="button" class="theme-btn" data-theme="nature">🌿 힐링 & 자연</button>
+            <button type="button" class="theme-btn" data-theme="ocean">🌊 바다 & 액티비티</button>
+            <button type="button" class="theme-btn" data-theme="photo">📸 인생샷 & 포토존</button>
+            <button type="button" class="theme-btn" data-theme="cafe">☕ 감성 카페 & 도심</button>
+          </div>
+
+          <!-- 테마 그리드 -->
+          <div class="theme-grid">
+            <!-- 카드 1 (자연) -->
+            <article class="trip-card theme-card" data-theme="nature">
+              <div class="card-img-wrap">
+                <img src="images/autumn.jpg" alt="순천만" loading="lazy" />
+                <span class="card-badge badge-autumn">🌿 힐링 & 자연</span>
+                <button type="button" class="btn-like" data-id="theme-1" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 전남 순천시</span>
+                <h3 class="card-title">순천만 국가정원 & 습지</h3>
+                <p class="card-desc">광활한 갈대숲 데크길을 걸으며 일상의 피로를 씻어내는 대한민국 1호 국가정원 힐링 코스.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#힐링</span><span class="tag-item">#자연생태</span><span class="tag-item">#국가정원</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="순천만 습지">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">142</span></span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 카드 2 (바다) -->
+            <article class="trip-card theme-card" data-theme="ocean">
+              <div class="card-img-wrap">
+                <img src="images/img3-800.jpg" alt="협재" loading="lazy" />
+                <span class="card-badge badge-summer">🌊 바다 & 액티비티</span>
+                <button type="button" class="btn-like" data-id="theme-2" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 제주 한림읍</span>
+                <h3 class="card-title">제주 협재 & 금능 바다</h3>
+                <p class="card-desc">패들보드와 스노클링을 즐기며 마주하는 투명한 제주 청정 바다와 비양도 풍경.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#스노클링</span><span class="tag-item">#해양스포츠</span><span class="tag-item">#에메랄드</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="제주 협재 & 금능">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">210</span></span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 카드 3 (인생샷) -->
+            <article class="trip-card theme-card" data-theme="photo">
+              <div class="card-img-wrap">
+                <img src="images/winter.jpg" alt="대관령 양떼목장" loading="lazy" />
+                <span class="card-badge badge-winter">📸 인생샷 & 포토존</span>
+                <button type="button" class="btn-like" data-id="theme-3" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 강원 평창군</span>
+                <h3 class="card-title">대관령 알프스 설경</h3>
+                <p class="card-desc">새하얀 설원 위 나무 오두막 앞에서 남기는 동화 같은 감성 스냅샷.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#인생샷</span><span class="tag-item">#스냅사진</span><span class="tag-item">#겨울감성</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="평창 대관령 양떼목장">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">188</span></span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 카드 4 (카페) -->
+            <article class="trip-card theme-card" data-theme="cafe">
+              <div class="card-img-wrap">
+                <img src="images/summer.jpg" alt="안목해변 카페거리" loading="lazy" />
+                <span class="card-badge badge-summer">☕ 감성 카페 & 도심</span>
+                <button type="button" class="btn-like" data-id="theme-4" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 강원 강릉시</span>
+                <h3 class="card-title">안목해변 커피거리</h3>
+                <p class="card-desc">파도 소리를 들으며 루프탑에서 즐기는 스페셜티 핸드드립 커피와 바다 산책.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#오션뷰카페</span><span class="tag-item">#루프탑</span><span class="tag-item">#원두향</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="강릉 경포대 & 안목해변">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">132</span></span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 카드 5 (자연) -->
+            <article class="trip-card theme-card" data-theme="nature">
+              <div class="card-img-wrap">
+                <img src="images/img11-800.jpg" alt="화담숲" loading="lazy" />
+                <span class="card-badge badge-autumn">🌿 힐링 & 자연</span>
+                <button type="button" class="btn-like" data-id="theme-5" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 경기 광주시</span>
+                <h3 class="card-title">화담숲 피톤치드 숲길</h3>
+                <p class="card-desc">피톤치드 가득한 자작나무 숲과 데크로드를 걸으며 숨을 고르는 친환경 생태 산책로.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#숲속힐링</span><span class="tag-item">#산림욕</span><span class="tag-item">#수목원</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="경기 광주 화담숲">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">119</span></span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 카드 6 (인생샷) -->
+            <article class="trip-card theme-card" data-theme="photo">
+              <div class="card-img-wrap">
+                <img src="images/spring.jpg" alt="경주 대릉원" loading="lazy" />
+                <span class="card-badge badge-spring">📸 인생샷 & 포토존</span>
+                <button type="button" class="btn-like" data-id="theme-6" aria-label="찜하기"><span>♥</span></button>
+              </div>
+              <div class="card-content">
+                <span class="card-location">📍 경북 경주시</span>
+                <h3 class="card-title">대릉원 목련 포토존</h3>
+                <p class="card-desc">고분 사이에 우뚝 선 고결한 목련나무 아래에서 찍는 전국 최고의 감성 인생샷 명당.</p>
+                <div class="card-tags">
+                  <span class="tag-item">#인생사진</span><span class="tag-item">#한옥스냅</span><span class="tag-item">#핫플</span>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn-card-detail" data-detail-key="경주 보문단지">자세히 보기 →</button>
+                  <span class="card-like-status">♥ <span class="like-count">196</span></span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. 여행 꿀팁 & 준비물 체크리스트 (Tips & Checklist) -->
+      <section class="section tips-section" id="tips">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">TRAVEL TIPS</span>
+            <h2 class="section-title">완벽한 여행을 위한 스마트 체크리스트</h2>
+            <p class="section-desc">떠나기 전 빠뜨린 짐은 없는지 체크하고, 계절별 여행 꿀팁을 확인해 보세요.</p>
+          </div>
+
+          <div class="tips-grid">
+            <!-- 체크리스트 카드 (LocalStorage 자동 저장) -->
+            <div class="checklist-card">
+              <h3 class="box-title">🎒 여행 필수품 체크리스트</h3>
+              
+              <div class="checklist-progress-wrap">
+                <div class="progress-header">
+                  <span>준비 진행도</span>
+                  <span id="checklist-progress-text">0 / 6 완료 (0%)</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="checklist-progress-bar"></div>
+                </div>
+              </div>
+
+              <ul class="checklist-list">
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-1" />
+                  <label for="check-1"><span>💳 신분증, 운전면허증 및 결제 수단</span></label>
+                </li>
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-2" />
+                  <label for="check-2"><span>🔋 스마트폰 충전기 & 대용량 보조배터리</span></label>
+                </li>
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-3" />
+                  <label for="check-3"><span>👟 편안한 걷기용 운동화 & 선글라스</span></label>
+                </li>
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-4" />
+                  <label for="check-4"><span>🧥 일교차 대비 겉옷 또는 휴대용 접이식 우산</span></label>
+                </li>
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-5" />
+                  <label for="check-5"><span>💊 비상 상비약 (두통약, 소화제, 멀미약, 밴드)</span></label>
+                </li>
+                <li class="checklist-item">
+                  <input type="checkbox" id="check-6" />
+                  <label for="check-6"><span>📸 삼각대 또는 블루투스 셀카봉</span></label>
+                </li>
+              </ul>
+
+              <div style="text-align: right;">
+                <button type="button" class="btn-reset-list" id="checklist-reset-btn">체크리스트 초기화</button>
+              </div>
+            </div>
+
+            <!-- 자주 묻는 꿀팁 아코디언 -->
+            <div class="faq-card">
+              <h3 class="box-title">💡 계절별 여행 꿀팁 & 노하우</h3>
+
+              <div class="accordion">
+                <details open>
+                  <summary>🚗 주말 고속도로 정체를 피하는 시간대</summary>
+                  <div class="accordion-body">
+                    동해안/강원 방면은 토요일 오전 6시 30분 이전에 출발하시거나, 일요일 오후 8시 이후 귀경하시면 정체를 최소 1시간 이상 줄일 수 있습니다. 실시간 도로 교통 앱(고속도로 교통정보)을 적극 활용하세요.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>🏨 인기 숙소 및 명소 예약 골든타임</summary>
+                  <div class="accordion-body">
+                    가을 화담숲 모노레일, 국립공원 야영장, 인기 휴양림은 방문 1개월 전 오전 9시~13시에 티켓팅이 오픈됩니다. 캘린더 알림을 미리 등록해두시면 매진을 예방할 수 있습니다.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>📸 인생 사진을 건지는 햇살의 골든아워</summary>
+                  <div class="accordion-body">
+                    일출 직후 1시간과 일몰 직전 1시간을 '매직 아워'라고 부릅니다. 이 시간대에는 햇빛이 부드럽고 따뜻한 붉은 톤을 띄어 얼굴에 그림자가 지지 않고 황홀한 배경을 담을 수 있습니다.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>🌿 현지 로컬 맛집 실패 없이 찾는 팁</summary>
+                  <div class="accordion-body">
+                    관광지 중심가보다는 관공서(시청, 군청) 인근 주민 맛집이나 카카오맵/네이버 지도에서 현지 주민들의 솔직 리뷰 수가 많은 곳을 검색하면 바가지 없이 훌륭한 식사를 즐길 수 있습니다.
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 7. 푸터 (원본 Contact Us 및 qrcode.png 승계) -->
+    <footer class="site-footer" id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- 브랜드 & 소개 -->
+          <div class="footer-brand">
+            <a href="#home" class="brand-logo">
+              <span class="brand-icon">🧭</span>
+              <span class="brand-name">Today's Trip</span>
+            </a>
+            <p class="footer-desc">
+              Today's Trip은 대한민국 방방곡곡 숨겨진 사계절 명소와 계절별 여행 트렌드를 가장 쉽고 빠르게 전해드리는 여행 가이드입니다. 지금 이 순간, 당신만의 특별한 여행을 시작해보세요.
+            </p>
+          </div>
+
+          <!-- 스마트폰 QR 코드 안내 (원본 qrcode.png 연계) -->
+          <div class="footer-qr-card">
+            <div class="footer-qr-box">
+              <img
+                src="images/qrcode.png"
+                alt="네이버 이동 QR 코드"
+                width="140"
+                height="140"
+              />
+            </div>
+            <h4 class="footer-qr-title">스마트폰으로 간편 스캔</h4>
+            <p class="footer-qr-sub">스마트폰 카메라로 스캔하여 모바일에서도 확인하세요.</p>
+          </div>
+
+          <!-- 문의하기 (원본 namkons77@gmail.com 계승) -->
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <ul class="contact-info-list">
+              <li class="contact-info-item">
+                <span>✉️ 문의 메일:</span>
+                <a href="mailto:namkons77@gmail.com" class="contact-email-link">namkons77@gmail.com</a>
+              </li>
+              <li class="contact-info-item">
+                <span>📍 서비스:</span>
+                <span>대한민국 사계절 여행지 추천 & 가이드</span>
+              </li>
+              <li class="contact-info-item">
+                <span>⏰ 운영시간:</span>
+                <span>상시 온라인 열람 가능</span>
+              </li>
+            </ul>
+
+            <a class="btn-contact-lg" href="mailto:namkons77@gmail.com">
+              <span>이메일로 문의하기</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Today's Trip. All rights reserved. Designed for hw3 travel recommendation project.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 여행지 상세 정보 모달창 (Detail Modal) -->
+    <div class="modal-overlay" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <button type="button" class="modal-close" aria-label="창 닫기">✕</button>
+        <div class="modal-header-img">
+          <img id="modal-img" src="" alt="" />
+          <span class="modal-season-badge" id="modal-season">사계절 추천</span>
+        </div>
+        <div class="modal-body">
+          <h3 class="modal-title" id="modal-title">여행지 이름</h3>
+          <div class="modal-sub" id="modal-sub">부제목</div>
+          <div class="modal-loc" id="modal-loc">위치 정보</div>
+          <p class="modal-desc" id="modal-desc">상세 설명</p>
+
+          <h4 class="modal-section-title">✨ 핵심 추천 포인트</h4>
+          <ul class="modal-highlights" id="modal-highlights">
+            <!-- 동적 삽입 -->
+          </ul>
+
+          <div class="modal-tip-box" id="modal-tip">
+            <!-- 꿀팁 동적 삽입 -->
+          </div>
+
+          <div class="modal-actions">
+            <a id="modal-map-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              🗺️ 네이버 지도에서 위치 보기
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모바일 QR 코드 확대 모달창 -->
+    <div class="modal-overlay" id="qr-modal" role="dialog" aria-modal="true" aria-label="모바일 QR 코드">
+      <div class="qr-modal-backdrop"></div>
+      <div class="modal-container qr-modal-container">
+        <button type="button" class="qr-modal-close" aria-label="창 닫기">✕</button>
+        <h3 style="font-size: 1.4rem; margin: 0 0 8px; font-weight: 700;">📱 모바일로 바로보기</h3>
+        <p style="font-size: 0.9rem; color: #64748b; margin: 0;">스마트폰 기본 카메라 앱을 열어 아래 QR 코드를 비추세요.</p>
+        <div class="qr-modal-img">
+          <img src="images/qrcode.png" alt="QR 코드 확대" />
+        </div>
+        <p style="font-size: 0.82rem; color: #94a3b8; margin: 0;">스마트폰에서도 동일하게 최적화된 화면으로 이용하실 수 있습니다.</p>
+      </div>
+    </div>
+
+    <!-- 맨 위로 가기 플로팅 버튼 -->
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="페이지 맨 위로 이동">
+      ↑
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
   </body>
 </html>
